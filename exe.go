@@ -27,11 +27,3 @@ func FindEXE() (*EXE, error) {
 		Message: "Unable to locate PDFill.exe",
 	}
 }
-
-// TestMissingExe is provided for testing purposes only
-func TestMissingExe() (*EXE, error) {
-	testPath = "./NoSuchFile.XXX"
-	x, err := FindEXE()
-	testPath = ""
-	return x, err
-}

@@ -54,11 +54,13 @@ func testErrorOutput(t *testing.T, err error, expc, expm, expx, exps string) {
 
 func testErrorCode(t *testing.T, err error, want string) {
 	if err == nil {
-		t.Errorf("Expected error '%s' but none occurred", want)
+		if want != "" {
+			t.Errorf("Expected error '%s' but none occurred", want)
+		}
 	}
 	got := pdfill.ErrorCode(err)
 	if got != want {
-		t.Errorf("Expected error code %s; got %s", want, err)
+		t.Errorf("Expected error code '%s'; got '%s': %s", want, got, err)
 	}
 }
 

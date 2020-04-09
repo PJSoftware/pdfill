@@ -14,7 +14,7 @@ func FindPDFill(fn ...string) (*PDFill, error) {
 		ep = fn[0]
 	}
 
-	if fileExists(ep) {
+	if FileExists(ep) {
 		exe := new(PDFill)
 		exe.exe = ep
 		return exe, nil

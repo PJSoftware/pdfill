@@ -9,9 +9,16 @@ import (
 
 // application error codes
 const (
-	ENOERROR     string = ""
-	EINTERNAL    string = "E_INTERNAL"
-	EEXENOTFOUND string = "E_EXE_NOT_FOUND"
+	// Required
+	ENOERROR  string = ""
+	EINTERNAL string = "E_INTERNAL"
+
+	// Application specific
+	EBADFILENAME    string = "E_BAD_FILENAME"
+	EEXENOTFOUND    string = "E_EXE_NOT_FOUND"
+	EFILENOTFOUND   string = "E_FILE_NOT_FOUND"
+	EFOLDERNOTFOUND string = "E_FOLDER_NOT_FOUND"
+	EINVALIDPDF     string = "E_INVALID_PDF"
 )
 
 // Error is our error type

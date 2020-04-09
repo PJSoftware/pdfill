@@ -7,12 +7,12 @@ import (
 )
 
 func TestFindExe(t *testing.T) {
-	_, err := pdfill.FindEXE()
+	_, err := pdfill.FindPDFill()
 	if err != nil {
 		t.Errorf("Error locating EXE: %s", err)
 	}
 
-	_, err = pdfill.MissingExeTest()
+	_, err = pdfill.FindPDFill("../NoSuchFile.exe")
 	exp := pdfill.EEXENOTFOUND
 	if got := pdfill.ErrorCode(err); got != exp {
 		t.Errorf("Expected '%s' error code; got '%s'", exp, got)

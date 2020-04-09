@@ -58,7 +58,6 @@ func cleanupTempDir(tf string) int {
 		path := tf + "/" + name
 		os.Remove(path)
 		fc++
-		fmt.Println("Removed file:", path)
 	}
 	os.Remove(tf)
 	return fc

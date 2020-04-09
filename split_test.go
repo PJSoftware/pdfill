@@ -1,6 +1,7 @@
 package pdfill_test
 
 import (
+	"os"
 	"testing"
 
 	"github.com/pjsoftware/pdfill"
@@ -8,6 +9,16 @@ import (
 
 func TestSplit(t *testing.T) {
 	const tf string = "testfiles/"
+
+	splitOutput := []string{
+		"MP-Page-0001.pdf",
+		"MP-Page-0002.pdf",
+		"MP-Page-0003.pdf",
+		"SP-Page-0001.pdf",
+	}
+	for _, file := range splitOutput {
+		os.Remove("testfiles/testout/" + file)
+	}
 
 	testCases := []struct {
 		name   string
@@ -34,6 +45,14 @@ func TestSplit(t *testing.T) {
 				t.Errorf("Expected result count %d, got %d -- Err: %v", test.expC, gotC, gotE)
 			}
 			testErrorCode(t, gotE, test.expEC)
+		})
+	}
+
+	for _, file := range splitOutput {
+		t.Run(file, func(t *testing.T) {
+			if !pdfill.FileExists("testfiles/testout/" + file) {
+				t.Errorf("Output file '%s' missing", file)
+			}
 		})
 	}
 }
